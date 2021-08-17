@@ -5,9 +5,107 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-		<!-- Your code goes here-->
+  <!-- Your code goes here-->
 
+       <div class="content" id="experiment-article-section-4-content">
+                            <form name="stuff">
+                                <p>Public Information:</p>
+                                <br/>
+                                <p>Prime Number: </p>
+                                <p>
+                                    <input id="prime" readonly="readonly" size="20" type="text" value=""/>
+                                    <input onclick="nextPrime();" type="button" value="Generate Prime"/>
+                                </p>
+                                <br/>
+                                <p>Generator G:</p>
+                                <p>
+                                    <input id="generator" readonly="readonly" size="20" type="text" value=""/>
+                                    <input onclick="nextGenerator();" type="button" value="Another Generator"/>
+                                </p>
+                                <br/>
+                                <table style="float: left;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <center><font color="red">Alice</font></center>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">Key:
+                                                <input id="keyA" readonly="readonly" size="20" type="text" value=""/>
+                                                <input onclick="nextKeyA();" type="button" value="Generate A"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input id="encryptA" readonly="readonly" size="20" type="text" value=""/>
+                                                <input onclick="calculateGA();" type="button" value="Calculate Ga"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input onclick="sendA();" type="button" value="Send Ga to B"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Received:
+                                                <input id="receivedA" readonly="readonly" size="20" type="text" value=""/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input onclick="calculateGAB();" type="button" value="Calculate Gab"/>
+                                                <input id="encryptAB" readonly="readonly" size="20" type="text" value=""/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table style="float: right;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <center><font color="red">Bob</font></center>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top">Key:
+                                                <input id="keyB" readonly="readonly" size="20" type="text" value=""/>
+                                                <input onclick="nextKeyB();" type="button" value="Generate B"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input id="encryptB" readonly="readonly" size="20" type="text" value=""/>
+                                                <input onclick="calculateGB();" type="button" value="Calculate Gb"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input onclick="sendB();" type="button" value="Send Gb to A"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Received:
+                                                <input id="receivedB" readonly="readonly" size="20" type="text" value=""/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input onclick="calculateGBA();" type="button" value="Calculate Gba"/>
+                                                <input id="encryptBA" readonly="readonly" size="20" type="text" value=""/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="clear:both;">
+                                </p>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </form>
+                        </div>
+  
 	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+        <script src="js/key_sharing.js"></script>
 </body>
 </html>
