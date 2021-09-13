@@ -16,7 +16,7 @@
   (c) 212  
   (d) 105  
 
-4. N=90 then Ø(n) =? Where Ø(n) is the number of elements co-prime to 'n' [Ø(n) is also called Euler Totient function ]  
+4. N=90 then &#248;(n) =? Where &#248;(n) is the number of elements co-prime to 'n' [&#248;(n) is also called Euler Totient function ]  
   (a) 8  
   (b) 24  
   (c) 48   
