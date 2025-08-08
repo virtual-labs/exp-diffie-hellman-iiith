@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Add CSS at the head of HTML file -->
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <!-- Your code goes here-->
+
+    <div class="content" id="experiment-article-section-4-content">
+      <!-- Public Information Section -->
+      <div class="section public-info">
+        <h3>Step 1: Public Information Setup</h3>
+        <div class="explanation">
+          Public information is shared openly between Alice and Bob. This
+          includes a large prime number (p) and a generator (g). An eavesdropper
+          can see these values, but they alone don't reveal the final shared
+          secret.
+        </div>
+
+        <form name="stuff">
+          <div style="margin-bottom: 20px">
+            <label><strong>Prime Number (p):</strong></label>
+            <input
+              id="prime"
+              readonly="readonly"
+              size="20"
+              type="text"
+              value=""
+            />
+            <input
+              onclick="nextPrime();"
+              type="button"
+              value="Generate Prime"
+            />
+            <span class="button-explanation"
+              >Selects a large prime number for the key exchange</span
+            >
+          </div>
+
+          <div style="margin-bottom: 20px">
+            <label><strong>Generator (g):</strong></label>
+            <input
+              id="generator"
+              readonly="readonly"
+              size="20"
+              type="text"
+              value=""
+            />
+            <input
+              onclick="nextGenerator();"
+              type="button"
+              value="Another Generator"
+            />
+            <span class="button-explanation"
+              >Chooses a primitive root modulo p</span
+            >
+          </div>
+
+          <div
+            class="explanation"
+            style="background-color: #d1ecf1; border-left-color: #0c5460"
+          >
+            <strong>Important:</strong> Both Alice and Bob can see the same
+            public values (p, g). These are not secret and can be transmitted
+            over an insecure channel.
+          </div>
+        </form>
+      </div>
+
+      <!-- Key Generation Section -->
+      <div class="section">
+        <h3>Step 2: Private Key Generation and Public Key Calculation</h3>
+        <div class="explanation">
+          Each participant generates their own private key (secret) and
+          calculates their public key using the formula:
+          <strong>Public Key = g^(private key) mod p</strong>
+        </div>
+
+        <div class="participants-container">
+          <!-- Alice's Section -->
+          <div class="participant alice">
+            <h3>Alice</h3>
+
+            <div class="key-row">
+              <label>Private Key (a):</label>
+              <input
+                id="keyA"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <input onclick="nextKeyA();" type="button" value="Generate A" />
+              <div class="button-explanation">
+                Alice's secret private key (kept secret)
+              </div>
+            </div>
+
+            <div class="key-row">
+              <label>Public Key (g^a mod p):</label>
+              <input
+                id="encryptA"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <input
+                onclick="calculateGA();"
+                type="button"
+                value="Calculate g^a"
+              />
+              <div class="button-explanation">
+                Alice's public key (can be shared openly)
+              </div>
+            </div>
+
+            <input
+              onclick="sendA();"
+              type="button"
+              value="Send Public Key to Bob"
+              class="send-button"
+            />
+
+            <div class="key-row">
+              <label>Received from Bob:</label>
+              <input
+                id="receivedA"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <div class="button-explanation">Bob's public key (g^b mod p)</div>
+            </div>
+
+            <div class="key-row">
+              <label>Shared Secret:</label>
+              <input
+                onclick="calculateGAB();"
+                type="button"
+                value="Calculate Shared Secret"
+                class="calculate-button"
+              />
+              <input
+                id="encryptAB"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <div class="button-explanation">
+                Final shared secret: (g^b)^a mod p = g^(ab) mod p
+              </div>
+            </div>
+          </div>
+
+          <!-- Bob's Section -->
+          <div class="participant bob">
+            <h3>Bob</h3>
+
+            <div class="key-row">
+              <label>Private Key (b):</label>
+              <input
+                id="keyB"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <input onclick="nextKeyB();" type="button" value="Generate B" />
+              <div class="button-explanation">
+                Bob's secret private key (kept secret)
+              </div>
+            </div>
+
+            <div class="key-row">
+              <label>Public Key (g^b mod p):</label>
+              <input
+                id="encryptB"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <input
+                onclick="calculateGB();"
+                type="button"
+                value="Calculate g^b"
+              />
+              <div class="button-explanation">
+                Bob's public key (can be shared openly)
+              </div>
+            </div>
+
+            <input
+              onclick="sendB();"
+              type="button"
+              value="Send Public Key to Alice"
+              class="send-button"
+            />
+
+            <div class="key-row">
+              <label>Received from Alice:</label>
+              <input
+                id="receivedB"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <div class="button-explanation">
+                Alice's public key (g^a mod p)
+              </div>
+            </div>
+
+            <div class="key-row">
+              <label>Shared Secret:</label>
+              <input
+                onclick="calculateGBA();"
+                type="button"
+                value="Calculate Shared Secret"
+                class="calculate-button"
+              />
+              <input
+                id="encryptBA"
+                readonly="readonly"
+                size="15"
+                type="text"
+                value=""
+              />
+              <div class="button-explanation">
+                Final shared secret: (g^a)^b mod p = g^(ab) mod p
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Section -->
+      <div class="section shared-secret">
+        <h3>Step 3: Verification</h3>
+        <div class="explanation">
+          <strong>Success!</strong> If both Alice and Bob calculated the same
+          shared secret value, they have successfully established a secure
+          communication channel. This shared secret can now be used as an
+          encryption key for further communication.
+        </div>
+        <div class="explanation">
+          <strong>Security Note:</strong> Even though an eavesdropper can see
+          all the public information (p, g, g^a mod p, g^b mod p), they cannot
+          easily compute the shared secret g^(ab) mod p without solving the
+          discrete logarithm problem, which is computationally difficult for
+          large numbers.
+        </div>
+      </div>
+    </div>
+
+    <!-- Add JS at the bottom of HTML file -->
+    <script src="js/key_sharing.js"></script>
+    <script src="js/mobile-detection.js"></script>
+  <script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>

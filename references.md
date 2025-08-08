@@ -1,0 +1,5 @@
+- [Wikipedia - Diffie-Hellman Key Exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+- [NIST Special Publication 800-56A - Recommendation for Pair-Wise Key Establishment Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Ar3.pdf)
+- [RFC 2631 - Diffie-Hellman Key Agreement Method](https://tools.ietf.org/html/rfc2631)
+- [Cryptography Engineering by Ferguson, Schneier, and Kohno](https://www.schneier.com/books/cryptography_engineering/)
+- [Stanford CS 255 - Introduction to Cryptography](https://crypto.stanford.edu/~dabo/cs255/)
